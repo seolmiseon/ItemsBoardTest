@@ -1,0 +1,44 @@
+.headerLayout {
+    width: 100%;
+    height: 60px;
+    background-color: #ffffff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    position: fixed;
+    top: 60px; /* Navigation 아래 위치 */
+    z-index: 900;
+}
+
+.leftHeader {
+    display: flex;
+    align-items: center;
+}
+
+.rightHeader {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+}
+.logo {
+    width: auto;
+    height: 100px;
+}
+.sellIcon {
+    width: 30px;
+    height: 30px;
+}
+
+.headerText {
+    font-weight: 500;
+    color: #000;
+    font-size: 14px;
+    transition: color 0.3s;
+}
+
+.headerText:hover {
+    color: #555;
+}

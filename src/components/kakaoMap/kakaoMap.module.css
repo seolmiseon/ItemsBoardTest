@@ -1,0 +1,93 @@
+/* 전체 컨테이너 */
+.container {
+    width: 100%;
+    max-width: 962px; /* 피그마 기준 */
+    margin: 0 auto;
+    padding: 20px;
+    position: relative;
+}
+
+/* 타이틀 (거래 위치) */
+.title {
+    font-size: 24px;
+    font-weight: 500;
+    color: black;
+    margin-bottom: 16px;
+}
+
+/* 지도 컨테이너 */
+.mapContainer {
+    position: relative;
+    width: 100%;
+    height: 400px;
+    background: #f0f0f0;
+    border: 1px solid #bdbdbd;
+    overflow: hidden;
+}
+
+.map {
+    width: 100%;
+    height: 100%;
+}
+
+/* 컨트롤 영역 */
+.controls {
+    display: flex;
+    flex-direction: column;
+    gap: 16px; /* 버튼과 텍스트 간 간격 */
+    margin-top: 20px; /* 지도와 컨트롤 영역 간 간격 */
+}
+
+/* 주소 검색 버튼 */
+.searchButton {
+    width: 100%;
+    height: 52px;
+    background: black;
+    color: white;
+    font-size: 16px;
+    font-weight: 500;
+    border: none;
+    cursor: pointer;
+    text-align: center;
+    transition: background 0.3s ease;
+}
+
+.searchButton:hover {
+    background: #333333;
+}
+
+/* 검색된 주소 표시 */
+.addressDisplay {
+    display: flex;
+    flex-direction: column;
+    gap: 8px; /* 줄 간 간격 */
+    font-size: 16px;
+    color: #4f4f4f;
+    padding: 12px;
+    background: #e9e9e9;
+    border-radius: 4px;
+    border: 1px solid #bdbdbd;
+    margin-top: 10px;
+}
+
+/* 읽기 전용 주소 표시 */
+.readOnlyAddress {
+    padding: 16px;
+    background: #f9f9f9;
+    border: 1px solid #bdbdbd;
+    font-size: 16px;
+    color: #4f4f4f;
+    border-radius: 4px;
+    margin-top: 16px;
+}
+
+@media (max-width: 768px) {
+    .mapContainer {
+        height: 300px;
+    }
+
+    .searchButton {
+        height: 48px;
+        font-size: 14px;
+    }
+}

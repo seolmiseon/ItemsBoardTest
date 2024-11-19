@@ -1,0 +1,273 @@
+schema {
+  query: Query
+  mutation: Mutation
+}
+"A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format."
+scalar DateTime
+"The `Upload` scalar type represents a file upload."
+scalar Upload
+type BoardAddress {
+  _id: ID!
+  zipcode: String
+  address: String
+  addressDetail: String
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  deletedAt: DateTime
+}
+type UserPoint {
+  _id: ID!
+  amount: Int!
+  user: User!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  deletedAt: DateTime
+}
+type User {
+  _id: ID!
+  email: String!
+  name: String!
+  picture: String
+  userPoint: UserPoint
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  deletedAt: DateTime
+}
+type Board {
+  _id: ID!
+  writer: String
+  title: String!
+  contents: String!
+  youtubeUrl: String
+  likeCount: Int!
+  dislikeCount: Int!
+  images: [String!]
+  boardAddress: BoardAddress
+  user: User
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  deletedAt: DateTime
+}
+type BoardComment {
+  _id: ID!
+  writer: String
+  contents: String!
+  rating: Float!
+  user: User
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  deletedAt: DateTime
+}
+type FileManager {
+  _id: ID!
+  url: String!
+  size: Float
+  isUsed: Boolean!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  deletedAt: DateTime
+}
+type UseditemAddress {
+  _id: ID!
+  zipcode: String
+  address: String
+  addressDetail: String
+  lat: Float
+  lng: Float
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  deletedAt: DateTime
+}
+type Useditem {
+  _id: ID!
+  name: String!
+  remarks: String!
+  contents: String!
+  price: Int
+  tags: [String!]
+  images: [String!]
+  pickedCount: Int
+  useditemAddress: UseditemAddress
+  buyer: User
+  seller: User
+  soldAt: DateTime
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  deletedAt: DateTime
+}
+type PointTransaction {
+  _id: ID!
+  impUid: ID
+  amount: Int!
+  balance: Int!
+  status: String!
+  statusDetail: String!
+  useditem: Useditem
+  user: User
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  deletedAt: DateTime
+}
+type Token {
+  accessToken: String!
+}
+type UseditemQuestion {
+  _id: ID!
+  contents: String!
+  useditem: Useditem!
+  user: User!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  deletedAt: DateTime
+}
+type UseditemQuestionAnswer {
+  _id: ID!
+  contents: String!
+  useditemQuestion: UseditemQuestion!
+  user: User!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  deletedAt: DateTime
+}
+type Query {
+  fetchBoard(boardId: ID!): Board!
+  fetchBoards(endDate: DateTime, startDate: DateTime, search: String, page: Int): [Board!]!
+  fetchBoardsCount(endDate: DateTime, startDate: DateTime, search: String): Int!
+  fetchBoardsCountOfMine: Int!
+  fetchBoardsOfMine: [Board!]!
+  fetchBoardsOfTheBest: [Board!]!
+  fetchBoardComments(page: Int, boardId: ID!): [BoardComment!]!
+  fetchPointTransactions(search: String, page: Int): [PointTransaction!]!
+  fetchPointTransactionsCountOfBuying: Int!
+  fetchPointTransactionsCountOfLoading: Int!
+  fetchPointTransactionsCountOfSelling: Int!
+  fetchPointTransactionsOfBuying(search: String, page: Int): [PointTransaction!]!
+  fetchPointTransactionsOfLoading(search: String, page: Int): [PointTransaction!]!
+  fetchPointTransactionsOfSelling(search: String, page: Int): [PointTransaction!]!
+  fetchUseditem(useditemId: ID!): Useditem!
+  fetchUseditems(isSoldout: Boolean, search: String, page: Int): [Useditem!]!
+  fetchUseditemsCountIBought: Int!
+  fetchUseditemsCountIPicked: Int!
+  fetchUseditemsCountISold: Int!
+  fetchUseditemsIBought(search: String, page: Int): [Useditem!]!
+  fetchUseditemsIPicked(search: String, page: Int): [Useditem!]!
+  fetchUseditemsISold(search: String, page: Int): [Useditem!]!
+  fetchUseditemsOfTheBest: [Useditem!]!
+  fetchUseditemQuestions(page: Int, useditemId: ID!): [UseditemQuestion!]!
+  fetchUseditemQuestionAnswers(page: Int, useditemQuestionId: ID!): [UseditemQuestionAnswer!]!
+  fetchUserLoggedIn: User!
+}
+type Mutation {
+  createBoard(createBoardInput: CreateBoardInput!): Board!
+  deleteBoard(boardId: ID!): ID!
+  deleteBoards(boardIds: [ID!]!): [ID!]!
+  dislikeBoard(boardId: ID!): Int!
+  likeBoard(boardId: ID!): Int!
+  updateBoard(updateBoardInput: UpdateBoardInput!, password: String, boardId: ID!): Board!
+  createBoardComment(createBoardCommentInput: CreateBoardCommentInput!, boardId: ID!): BoardComment!
+  deleteBoardComment(password: String, boardCommentId: ID!): ID!
+  updateBoardComment(updateBoardCommentInput: UpdateBoardCommentInput!, password: String, boardCommentId: ID!): BoardComment!
+  uploadFile(file: Upload!): FileManager!
+  createPointTransactionOfBuyingAndSelling(useritemId: ID!): Useditem!
+  createPointTransactionOfLoading(impUid: ID!): PointTransaction!
+  restoreAccessToken: Token!
+  createUseditem(createUseditemInput: CreateUseditemInput!): Useditem!
+  deleteUseditem(useditemId: ID!): ID!
+  updateUseditem(updateUseditemInput: UpdateUseditemInput!, useditemId: ID!): Useditem!
+  toggleUseditemPick(useditemId: ID!): Int!
+  createUseditemQuestion(createUseditemQuestionInput: CreateUseditemQuestionInput!, useditemId: ID!): UseditemQuestion!
+  deleteUseditemQuestion(useditemQuestionId: ID!): ID!
+  updateUseditemQuestion(updateUseditemQuestionInput: UpdateUseditemQuestionInput!, useditemQuestionId: ID!): UseditemQuestion!
+  createUseditemQuestionAnswer(createUseditemQuestionAnswerInput: CreateUseditemQuestionAnswerInput!, useditemQuestionId: ID!): UseditemQuestionAnswer!
+  deleteUseditemQuestionAnswer(useditemQuestionAnswerId: ID!): String!
+  updateUseditemQuestionAnswer(updateUseditemQuestionAnswerInput: UpdateUseditemQuestionAnswerInput!, useditemQuestionAnswerId: ID!): UseditemQuestionAnswer!
+  createUser(createUserInput: CreateUserInput!): User!
+  loginUser(password: String!, email: String!): Token!
+  loginUserExample(password: String!, email: String!): Token!
+  logoutUser: Boolean!
+  resetUserPassword(password: String!): Boolean!
+  updateUser(updateUserInput: UpdateUserInput!): User!
+}
+input CreateBoardInput {
+  writer: String
+  password: String
+  title: String!
+  contents: String!
+  youtubeUrl: String
+  boardAddress: BoardAddressInput
+  images: [String!]
+}
+input BoardAddressInput {
+  zipcode: String
+  address: String
+  addressDetail: String
+}
+input UpdateBoardInput {
+  title: String
+  contents: String
+  youtubeUrl: String
+  boardAddress: BoardAddressInput
+  images: [String!]
+}
+input CreateBoardCommentInput {
+  writer: String
+  password: String
+  contents: String!
+  rating: Float!
+}
+input UpdateBoardCommentInput {
+  contents: String
+  rating: Float
+}
+input CreateUseditemInput {
+  name: String!
+  remarks: String!
+  contents: String!
+  price: Int!
+  tags: [String!]
+  useditemAddress: UseditemAddressInput
+  images: [String!]
+}
+input UseditemAddressInput {
+  zipcode: String
+  address: String
+  addressDetail: String
+  lat: Float
+  lng: Float
+}
+input UpdateUseditemInput {
+  name: String
+  remarks: String
+  contents: String
+  price: Int
+  tags: [String!]
+  useditemAddress: UseditemAddressInput
+  images: [String!]
+}
+input CreateUseditemQuestionInput {
+  contents: String!
+}
+input UpdateUseditemQuestionInput {
+  contents: String!
+}
+input CreateUseditemQuestionAnswerInput {
+  contents: String!
+}
+input UpdateUseditemQuestionAnswerInput {
+  contents: String!
+}
+input CreateUserInput {
+  email: String!
+  password: String!
+  name: String!
+}
+input UpdateUserInput {
+  name: String
+  picture: String
+}
+"Exposes a URL that specifies the behaviour of this scalar."
+directive @specifiedBy(
+    "The URL that specifies the behaviour of this scalar."
+    url: String!
+  ) on SCALAR
+

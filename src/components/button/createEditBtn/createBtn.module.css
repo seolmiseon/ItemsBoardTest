@@ -1,0 +1,38 @@
+.board-new-item__button-group {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.board-new-item__button--cancel {
+    width: 48%;
+    padding: 12px;
+    font-size: 16px;
+    font-weight: 700;
+    background-color: #f9c74f;
+    color: #000;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+.board-new-item__button--cancel:hover {
+    background-color: #f6b81c;
+}
+
+.board-new-item__button--create {
+    width: 48%;
+    padding: 12px;
+    font-size: 16px;
+    font-weight: 700;
+    background-color: #000;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+.board-new-item__button--create:hover {
+    background-color: #333;
+}

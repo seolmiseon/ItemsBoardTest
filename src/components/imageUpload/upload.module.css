@@ -1,0 +1,57 @@
+.imgCard {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px; /* 카드 간 간격 */
+    justify-content: flex-start;
+    align-items: flex-start;
+    padding: 16px;
+    border: 1px dashed #ccc; /* 업로드 영역 */
+    min-height: 200px; /* 영역 최소 높이 */
+    cursor: pointer;
+    background-color: #f9f9f9; /* 업로드 영역 배경 */
+}
+
+.uploadText {
+    font-size: 20px;
+    font-weight: bold;
+    color: #777;
+    text-align: center;
+}
+
+.imagePreview {
+    position: relative;
+    width: 180px;
+    height: 180px;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border: 1px solid #ddd; /* 카드 경계선 */
+    background-color: #fff;
+}
+
+.imagePreview img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.deleteButton {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    width: 24px;
+    height: 24px;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.deleteButton:hover {
+    background-color: rgba(255, 0, 0, 0.7);
+}

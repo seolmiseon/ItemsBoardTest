@@ -1,0 +1,9 @@
+.logo2 {
+    width: auto;
+    height: 100px;
+    background-color: #000;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 20px;
+}

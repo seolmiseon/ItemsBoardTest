@@ -1,0 +1,18 @@
+/* 글로벌 CSS 파일 또는 모듈 CSS */
+.tagify-input {
+    min-height: 40px;
+    width: 100%;
+}
+
+.tagify {
+    --tags-border-color: #e2e8f0;
+    --tags-hover-border-color: #cbd5e0;
+    --tags-focus-border-color: #4299e1;
+    --tag-bg: #edf2f7;
+    --tag-hover: #e2e8f0;
+    --tag-text-color: #2d3748;
+    --tag-text-color--edit: #2d3748;
+    --tag-pad: 0.5em 0.75em;
+    --tag-inset-shadow-size: 1.1em;
+    --tag-border-radius: 0.375em;
+}

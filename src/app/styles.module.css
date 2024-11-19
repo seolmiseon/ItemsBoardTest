@@ -1,0 +1,19 @@
+.listContainer {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 20px;
+    width: 100%;
+}
+
+@media (max-width: 768px) {
+    .item {
+        flex: 1 1 200px; /* 화면이 768px 이하일 때, 최소 크기를 200px로 조정 */
+    }
+}
+
+@media (max-width: 480px) {
+    .item {
+        flex: 1 1 100%; /* 화면이 480px 이하일 때, 아이템들이 1열로 배치되도록 */
+    }
+}

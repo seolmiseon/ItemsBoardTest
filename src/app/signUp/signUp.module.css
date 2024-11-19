@@ -1,0 +1,103 @@
+.signUpContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100%; /* 부모 레이아웃 높이 100% 사용 */
+    background-color: #f5f5f5;
+}
+
+.signUpBox {
+    width: 100%;
+    max-width: 400px; /* 화면 크기에 따라 폭 제한 */
+    padding: 2rem;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* 입력 필드 스타일 */
+.inputText {
+    margin-bottom: 1rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.inputText label {
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+}
+
+.inputText input {
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1rem;
+}
+
+/* 에러 메시지 스타일 */
+.inputText p {
+    margin-top: 0.5rem;
+    color: red;
+    font-size: 0.875rem;
+}
+
+/* 버튼 래퍼 */
+.btnWrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 21px;
+    max-width: 700px;
+    height: auto;
+    margin: 0 auto;
+}
+
+/* 회원가입 버튼 */
+.signUpBtn {
+    background-color: #ffe004;
+    color: #000;
+    height: 70px;
+    padding: 0 20px;
+    border: none;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.signUpBtn:disabled {
+    background-color: #e0e0e0;
+    color: #8c8c8c;
+    cursor: not-allowed;
+}
+
+/* 취소 버튼 */
+.cancelBtn {
+    background-color: #000;
+    color: #fff;
+    height: 70px;
+    padding: 0 20px;
+    border: none;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.cancelBtn:hover {
+    background-color: #333;
+}
+
+/* 반응형 디자인 */
+@media (max-width: 768px) {
+    .btnWrapper {
+        flex-direction: column; /* 모바일에서 세로 정렬 */
+        gap: 15px;
+    }
+
+    .signUpBtn,
+    .cancelBtn {
+        width: 100%;
+    }
+}
